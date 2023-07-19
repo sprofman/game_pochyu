@@ -8,7 +8,7 @@ class Ball:
     def __init__(self, display):
         self.radius = 10
         self.max_v0 = 100
-        self.v0 = 100
+        self.v0 = 112
         self.alf = 45
         self.x0 = x0
         self.y0 = y0 - self.radius
@@ -31,4 +31,10 @@ class Ball:
         draw.circle(surface=self.display,
                     color=BLACK,
                     center=(x, y),
+                    radius=self.radius)
+
+    def draw_start_pos_ball(self):
+        draw.circle(surface=self.display,
+                    color=BLACK,
+                    center=(self.x0, self.y0),
                     radius=self.radius)

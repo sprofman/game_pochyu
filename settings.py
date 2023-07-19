@@ -6,4 +6,7 @@ s = 70
 y0 = display_height - s
 step_x = 4
 
+v_min = 40
+v_max = 112
+
 g = 9.81
