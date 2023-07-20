@@ -10,3 +10,10 @@ v_min = 40
 v_max = 112
 
 g = 9.81
+
+radius = 10
+
+l_min = 71
+l_max = 200
+
+ls = 5

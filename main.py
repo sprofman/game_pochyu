@@ -3,6 +3,7 @@ from colors import *
 from settings import *
 from ball import Ball
 from trajectory import Trajectory
+from arrow import Arrow
 
 class Game:
     def __init__(self):
@@ -27,6 +28,11 @@ class Game:
                 elif event.type == pg.MOUSEBUTTONUP and not rele_start:
                     map = ball.fly_map()
                     rele_start = True
+                elif event.type == pg.MOUSEBUTTONDOWN and not rele_start:
+                    pos = pg.mouse.get_pos()
+                    arr = Arrow(self.display, pos)
+                    arr.draw_arrow()
+                    pg.display.update()
 
             pg.time.delay(1000 // self.FPS)
             self.display.fill(WHITE)

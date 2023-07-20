@@ -6,7 +6,7 @@ from colors import *
 
 class Ball:
     def __init__(self, display):
-        self.radius = 10
+        self.radius = radius
         self.max_v0 = 100
         self.v0 = 112
         self.alf = 45
