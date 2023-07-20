@@ -16,4 +16,4 @@ radius = 10
 l_min = 71
 l_max = 200
 
-ls = 5
+ls = 20

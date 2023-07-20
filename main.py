@@ -31,8 +31,6 @@ class Game:
                 elif event.type == pg.MOUSEBUTTONDOWN and not rele_start:
                     pos = pg.mouse.get_pos()
                     arr = Arrow(self.display, pos)
-                    arr.draw_arrow()
-                    pg.display.update()
 
             pg.time.delay(1000 // self.FPS)
             self.display.fill(WHITE)
@@ -46,7 +44,7 @@ class Game:
                 ball.draw_start_pos_ball()
 
                 if pressed[0]:
-                    pass # события, связанные со стрелкой
+                    arr.draw_arrow()
 
             if rele_start:
                 if ind != len(map) - 1:
