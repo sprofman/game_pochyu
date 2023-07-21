@@ -26,6 +26,9 @@ class Game:
                     pg.quit()
                     rele = False
                 elif event.type == pg.MOUSEBUTTONUP and not rele_start:
+                    v0, alf = arr.return_params()
+                    ball.v0 = v0
+                    ball.alf = alf
                     map = ball.fly_map()
                     rele_start = True
                 elif event.type == pg.MOUSEBUTTONDOWN and not rele_start:
@@ -44,7 +47,8 @@ class Game:
                 ball.draw_start_pos_ball()
 
                 if pressed[0]:
-                    arr.change_params(pos)
+                    if pos[0] > x0 and pos[1] < y0 - radius:
+                        arr.change_params(pos)
                     arr.draw_arrow()
 
             if rele_start:

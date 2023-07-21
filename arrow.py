@@ -10,6 +10,8 @@ class Arrow:
         self.y_m_p = mouse_pos[1]
         self.display = display
         self.kx = self.x_m_p - x0
+        if self.kx == 0:
+            self.kx = 0.00000001
         self.ky = display_height - self.y_m_p - s - radius
         self.alf = math.atan(self.ky / self.kx)
         self.bet = 20 * math.pi / 180
@@ -30,4 +32,33 @@ class Arrow:
         pg.display.update()
 
     def change_params(self, pos):
-        pass
+        self.x_m_p = pos[0]
+        self.y_m_p = pos[1]
+        self.kx = self.x_m_p - x0
+        if self.kx == 0:
+            self.kx = 0.00000001
+        self.ky = display_height - self.y_m_p - s - radius
+        self.alf = math.atan(self.ky / self.kx)
+        if self.alf >= max_alf:
+            self.alf = max_alf
+        elif self.alf <= min_alf:
+            self.alf = min_alf
+        self.bet = 20 * math.pi / 180
+        self.l = math.sqrt(self.kx ** 2 + self.ky ** 2)
+        d_l = self.l - self.l0
+        self.l_ar = l_min + d_l
+        if self.l_ar <= l_min:
+            self.l_ar = l_min
+        elif self.l_ar >= l_max:
+            self.l_ar = l_max
+        self.x1 = self.l_ar * math.cos(self.alf) + x0
+        self.y1 = y0 - self.l_ar * math.sin(self.alf) - radius
+        self.xs1 = self.x1 - ls * math.cos(self.bet - self.alf)
+        self.ys1 = self.y1 - ls * math.sin(self.bet - self.alf)
+        self.xs2 = self.x1 - ls * math.cos(self.bet + self.alf)
+        self.ys2 = self.y1 + ls * math.sin(self.bet + self.alf)
+
+    def return_params(self):
+        k = (self.l_ar - l_min) / (l_max - l_min)
+        v0 = k * (v_max - v_min) + v_min
+        return v0, self.alf
