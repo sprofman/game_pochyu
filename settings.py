@@ -13,7 +13,7 @@ g = 9.81
 
 radius = 10
 
-l_min = 71
-l_max = 200
+l_min = 40
+l_max = 112
 
 ls = 20

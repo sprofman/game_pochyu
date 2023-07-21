@@ -44,6 +44,7 @@ class Game:
                 ball.draw_start_pos_ball()
 
                 if pressed[0]:
+                    arr.change_params(pos)
                     arr.draw_arrow()
 
             if rele_start:

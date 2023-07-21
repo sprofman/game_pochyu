@@ -24,8 +24,10 @@ class Arrow:
         self.ys2 = self.y1 + ls * math.sin(self.bet + self.alf)
 
     def draw_arrow(self):
-        print((x0, y0),(self.x1, self.y1))
         pg.draw.aaline(self.display, BLACK, (x0, y0 - radius), (self.x1, self.y1))
         pg.draw.aaline(self.display, BLACK, (self.x1, self.y1),(self.xs1, self.ys1))
         pg.draw.aaline(self.display, BLACK, (self.x1, self.y1),(self.xs2, self.ys2))
         pg.display.update()
+
+    def change_params(self, pos):
+        pass
