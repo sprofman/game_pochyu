@@ -17,11 +17,11 @@ class Target:
 
 
     def draw(self):
-        n = randint(1, 100)
-        if n == 1:
-            self.x1 = randint(display_width / 2, display_width - self.width)
-            self.y1 = display_height - self.height - s
-            self.x2 = self.x1 + display_width
-            self.y2 = self.y1 + display_height
         pg.draw.rect(self.display, self.color, (self.x1, self.y1, self.width, self.height))
-        pg.display.update()
+        # pg.display.update()
+
+    def recalculation(self):
+        self.x1 = randint(display_width / 2, display_width - self.width)
+        self.y1 = display_height - self.height - s
+        self.x2 = self.x1 + display_width
+        self.y2 = self.y1 + display_height

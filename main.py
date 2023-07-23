@@ -5,6 +5,7 @@ from ball import Ball
 from trajectory import Trajectory
 from arrow import Arrow
 from target import Target
+from random import randint
 
 class Game:
     def __init__(self):
@@ -24,7 +25,6 @@ class Game:
         rele = True
         rele_start = False
         while rele:
-            targ.draw()
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     pg.quit()
@@ -44,11 +44,16 @@ class Game:
             pg.draw.rect(self.display,
                          GRAY,
                          (0, y0, display_width, display_height))
+            targ.draw()
 
             if not rele_start:
                 pressed = pg.mouse.get_pressed()
                 pos = pg.mouse.get_pos()
                 ball.draw_start_pos_ball()
+
+                n = randint(1, 100)
+                if n == 1:
+                    targ.recalculation()
 
                 if pressed[0]:
                     if pos[0] > x0 and pos[1] < y0 - radius:
