@@ -4,6 +4,7 @@ from settings import *
 from ball import Ball
 from trajectory import Trajectory
 from arrow import Arrow
+from target import Target
 
 class Game:
     def __init__(self):
@@ -18,9 +19,12 @@ class Game:
 
         trajectory = Trajectory(self.display)
 
+        targ = Target(self.display)
+
         rele = True
         rele_start = False
         while rele:
+            targ.draw()
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     pg.quit()
