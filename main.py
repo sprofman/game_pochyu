@@ -18,12 +18,15 @@ class Game:
         ball = Ball(self.display)
         ind = 0
 
+        font = pg.font.Font(None, 24)
+
         trajectory = Trajectory(self.display)
 
         targ = Target(self.display)
 
         rele = True
         rele_start = False
+        score = 0
         while rele:
             for event in pg.event.get():
                 if event.type == pg.QUIT:
@@ -33,7 +36,7 @@ class Game:
                     v0, alf = arr.return_params()
                     ball.v0 = v0
                     ball.alf = alf
-                    map = ball.fly_map()
+                    map, d = ball.fly_map(targ.x1, targ.x2, targ.y1, targ.y2)
                     rele_start = True
                 elif event.type == pg.MOUSEBUTTONDOWN and not rele_start:
                     pos = pg.mouse.get_pos()
@@ -44,6 +47,8 @@ class Game:
             pg.draw.rect(self.display,
                          GRAY,
                          (0, y0, display_width, display_height))
+            text = font.render('Счёт: ' + str(score), True, BLACK)
+            self.display.blit(text, (10, 50))
             targ.draw()
 
             if not rele_start:
@@ -73,6 +78,7 @@ class Game:
                     ball.x = ball.x0
                     trajectory.traject_list.clear()
                     rele_start = False
+                    score += d
             pg.display.update()
 
 

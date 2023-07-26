@@ -16,14 +16,18 @@ class Ball:
         self.y = self.y0
         self.display = display
 
-    def fly_map(self):
+    def fly_map(self, x1, x2, y1, y2):
         map_list = [(self.x, self.y)]
+        d = 0
         while self.y <= self.y0:
             self.x += step_x
             self.y = -(self.x - x0) * math.tan(self.alf) + g / (2 * self.v0 ** 2 * (math.cos(self.alf) ** 2)) * (
                         self.x - x0) ** 2 + self.y0
+            if x1 <= self.x <= x2 and y1 <= self.y <= y2:
+                d = 1
+                break
             map_list.append((self.x, self.y))
-        return map_list
+        return map_list, d
 
     def draw_ball(self, coord):
         x = coord[0]

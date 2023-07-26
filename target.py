@@ -10,8 +10,8 @@ class Target:
         self.height = 50
         self.x1 = randint(display_width / 2, display_width - self.width)
         self.y1 = display_height - self.height - s
-        self.x2 = self.x1 + display_width
-        self.y2 = self.y1 + display_height
+        self.x2 = self.x1 + self.width
+        self.y2 = self.y1 + self.height
         self.color = LIGHT_BLUE
         self.display = display
 
@@ -23,5 +23,5 @@ class Target:
     def recalculation(self):
         self.x1 = randint(display_width / 2, display_width - self.width)
         self.y1 = display_height - self.height - s
-        self.x2 = self.x1 + display_width
-        self.y2 = self.y1 + display_height
+        self.x2 = self.x1 + self.width
+        self.y2 = self.y1 + self.height
